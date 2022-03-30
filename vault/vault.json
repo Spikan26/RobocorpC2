@@ -1,0 +1,6 @@
+{
+    "credentials": {
+        "url_csv": "https://robotsparebinindustries.com/orders.csv",
+        "url_web": "https://robotsparebinindustries.com/#/robot-order"
+    }
+}
