@@ -73,7 +73,7 @@ Store the receipt as a PDF
 
 Take a screenshot of the robot
     [Arguments]    ${order_number}
-    Screenshot    id:robot-preview    ${OUTPUT_DIR}${/}receipts${/}${order_number}.png
+    Screenshot    id:robot-preview-image    ${OUTPUT_DIR}${/}receipts${/}${order_number}.png
     [Return]    ${OUTPUT_DIR}${/}receipts${/}${order_number}.png
 
 Embed the robot screenshot to the receipt
