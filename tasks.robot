@@ -11,15 +11,13 @@ Library           RPA.Archive
 Library           RPA.FileSystem
 Library           RPA.HTTP
 Library           RPA.Robocorp.Vault
-Library           RPA.Dialogs
-
-*** Variables ***
-${vault}=         Get Secret    credentials
+Library           Dialogs
 
 *** Tasks ***
 Orders robots from RobotSpareBin Industries Inc.
     ${url_csv}=    Ask user for CSV Url
-    Open the robot order website
+    ${vault}=    Get Secret    credentials
+    Open the robot order website    ${vault}
     ${orders}=    Get orders    ${url_csv}
     FOR    ${row}    IN    @{orders}
         Close the modal
@@ -36,11 +34,11 @@ Orders robots from RobotSpareBin Industries Inc.
 
 *** Keywords ***
 Ask user for CSV Url
-    Add text input    input
-    ${response}=    Run dialog
-    [Return]    ${response.input}
+    ${response}=    Get Value From User    Enter the CSV Url
+    [Return]    ${response}
 
 Open the robot order website
+    [Arguments]    ${vault}
     Open Browser    ${vault}[url_web]    chrome
 
 Get orders
